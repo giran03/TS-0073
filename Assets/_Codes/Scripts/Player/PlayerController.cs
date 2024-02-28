@@ -195,12 +195,20 @@ public class PlayerController : MonoBehaviour
     {
         // if the player somehow glitches out the map, respawn's the player at default spawn
         if (transform.position.y < -40)
-            RespawnPlayer();
+            TeleportPlayer();
     }
 
-    void RespawnPlayer()
+    void TeleportPlayer()
     {
         var (pos, rot) = initialPosition;
+        transform.SetPositionAndRotation(pos, rot);
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        Physics.SyncTransforms();
+    }
+
+    public void TransitionLevel(Vector3 pos, quaternion rot)
+    {
         transform.SetPositionAndRotation(pos, rot);
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;

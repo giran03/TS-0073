@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
 using UnityEngine;
-
+/// <summary>
+/// This script can be found under the Camera Holder in the heirarchy.
+/// </summary>
 public class FirstPersonCameraController : MonoBehaviour
 {
     [Header("Mouse Look")]

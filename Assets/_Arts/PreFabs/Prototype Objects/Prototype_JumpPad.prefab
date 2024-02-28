@@ -140,5 +140,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da1b861434cc304eb6358f6819e9a80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 3
-  jumpPadCooldownDuration: 4
+  jumpForce: 5
+  jumpPadCooldownDuration: 1.5

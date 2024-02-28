@@ -89,7 +89,7 @@ public class PlayerPhsygunController : MonoBehaviour
             grabOffset = hit.transform.InverseTransformVector(hit.point - hit.transform.position);
             grabDistance = hit.distance;
             selectedObject = hit.rigidbody;
-            selectedObject.collisionDetectionMode = CollisionDetectionMode.Continuous;
+            // selectedObject.collisionDetectionMode = CollisionDetectionMode.Continuous;
             selectedObject.useGravity = false;
             selectedObject.isKinematic = false;
             lineRenderer.enabled = true;
@@ -98,7 +98,7 @@ public class PlayerPhsygunController : MonoBehaviour
 
     private void Release(bool freeze = false)
     {
-        selectedObject.collisionDetectionMode = CollisionDetectionMode.Continuous;
+        // selectedObject.collisionDetectionMode = CollisionDetectionMode.Continuous;
         selectedObject.useGravity = true;
         selectedObject.isKinematic = false;
         lineRenderer.enabled = false;

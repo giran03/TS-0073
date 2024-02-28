@@ -1,12 +1,13 @@
 using UnityEngine;
-
-public class SoundTriggerHandler : MonoBehaviour
+/// <summary>
+/// This script can be found under 'SoundTrigger' prefab.
+/// </summary>
+public class NarrationTriggerHandler : MonoBehaviour
 {
     [Header("Configs")]
-    [SerializeField] Transform playerOrientation;
+    [SerializeField] Transform playerOrientation; // drop the playerOrientation under the playerObject prefab here
 
     AudioSource sfx;
-    bool hasPlayed = false;
     bool playerEntered;
 
     private void Start() => sfx = GetComponent<AudioSource>();
@@ -14,6 +15,7 @@ public class SoundTriggerHandler : MonoBehaviour
     private void Update()
     {
         if(!playerEntered) return;
+
         transform.position = playerOrientation.position; // Update the AudioSource's position to follow the player.
         if(!sfx.isPlaying)
             gameObject.SetActive(false);
@@ -21,10 +23,9 @@ public class SoundTriggerHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !hasPlayed)
+        if (other.CompareTag("Player"))
         {
-            sfx.Play(); // Play the clip on the AudioSource.
-            hasPlayed = true;
+            AudioManager.Instance.QueueAudioClip(sfx.clip); // Add the clip to the queue.
             playerEntered = true;
         }
     }
