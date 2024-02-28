@@ -5,12 +5,11 @@ using UnityEngine.EventSystems;
 
 public class DraggableObjectHandler : MonoBehaviour
 {
-    [SerializeField] string[] layerMasks;
+    [SerializeField] string[] groundLayers = new string[] {"Ground", "Grab", "Grapple"};
     LayerMask whatIsGround;
-    private void Start()
-    {
-        whatIsGround = LayerMask.GetMask(layerMasks);
-    }
+
+    private void Start() => whatIsGround = LayerMask.GetMask(groundLayers);
+
     private void Update()
     {
         var terrain = Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, Mathf.Infinity, whatIsGround);

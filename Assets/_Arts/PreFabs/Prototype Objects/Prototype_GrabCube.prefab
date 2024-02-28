@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 6775715289696096269}
   - component: {fileID: 4699092585941217257}
   - component: {fileID: 4633263225376541926}
-  - component: {fileID: 1049027245446385511}
+  - component: {fileID: 8896059255402723931}
   m_Layer: 6
-  m_Name: Prototype_Draggable
-  m_TagString: Draggable
+  m_Name: Prototype_GrabCube
+  m_TagString: LaserBlockObj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,7 +134,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &1049027245446385511
+--- !u!114 &8896059255402723931
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78273754d9aee648a3fa677e14e8955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerMasks:
+  groundLayers:
   - Ground
   - Draggable
   - Grappable

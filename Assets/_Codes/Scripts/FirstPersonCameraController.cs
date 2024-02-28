@@ -30,12 +30,8 @@ public class FirstPersonCameraController : MonoBehaviour
         yRotation += mousex;
         xRotation -= mousey;
 
-        if(!PlayerInteractionHandler.isDragging)
-            xRotation = Mathf.Clamp(xRotation, -90, 90);
-        else
-            xRotation = Mathf.Clamp(xRotation, -90, 40);
 
-        // Debug.Log(xRotation, this);
+        xRotation = Mathf.Clamp(xRotation, -90, 90);
 
         // rotate cam and orientation
         firstPersonCamera.rotation = Quaternion.Euler(xRotation, yRotation, 0);

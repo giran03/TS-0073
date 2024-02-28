@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -26,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Ground Check")]
     [SerializeField] float playerHeight;
-    [SerializeField] string[] layerMasks;
+    [SerializeField] string[] groundLayers = new string[] {"Ground", "Grab", "Grapple"};
     LayerMask whatIsGround;
     bool grounded;
 
@@ -40,26 +37,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float gravityValue;
 
 
+    // key inputs
     float horizontalInput;
     float verticalInput;
 
     (Vector3, quaternion) initialPosition;
     Vector3 moveDirection;
     Rigidbody rb;
-    MovementState state;
-    public enum MovementState
-    {
-        walking,
-        sprinting,
-        swinging,
-        air
-    }
-
+    
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-        whatIsGround = LayerMask.GetMask(layerMasks);
+        whatIsGround = LayerMask.GetMask(groundLayers);
         readyToJump = true;
         initialPosition = (transform.position, transform.rotation);
     }
@@ -67,7 +57,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * .7f, whatIsGround);
 
         MyInput();
         SpeedControl();
@@ -79,6 +69,8 @@ public class PlayerController : MonoBehaviour
             rb.drag = groundDrag;
         else
             rb.drag = 0;
+
+        Debug.Log(grounded);
     }
 
     private void FixedUpdate()
@@ -106,31 +98,19 @@ public class PlayerController : MonoBehaviour
     {
         // state - Sprinting
         if (grounded && Input.GetKey(sprintKey))
-        {
-            state = MovementState.sprinting;
             moveSpeed = sprintSpeed;
-        }
 
         // state - Walking
         else if (grounded)
-        {
-            state = MovementState.walking;
             moveSpeed = walkSpeed;
-        }
 
         // state - swinging/grapple
         else if (isSwinging)
-        {
-            state = MovementState.walking;
             moveSpeed = swingSpeed;
-        }
 
         // state - Air
         else
-        {
-            state = MovementState.air;
             rb.AddForce(gravityValue * rb.mass * Physics.gravity, ForceMode.Force);
-        }
     }
 
     private void MovePlayer()
@@ -144,7 +124,7 @@ public class PlayerController : MonoBehaviour
         if (OnSlope() && !exitingSlope)
         {
             rb.AddForce(20f * moveSpeed * GetSlopeMoveDirection(), ForceMode.Force);
-
+            rb.useGravity = false;
             if (rb.velocity.y > 0)
                 rb.AddForce(Vector3.down * 80f, ForceMode.Force);
         }
@@ -202,7 +182,7 @@ public class PlayerController : MonoBehaviour
 
     private bool OnSlope()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * .8f))
         {
             float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
             return angle < maxSlopeAngle && angle != 0;

@@ -1,19 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundTriggerHandler : MonoBehaviour
 {
     [Header("Configs")]
     [SerializeField] Transform playerOrientation;
+
     AudioSource sfx;
     bool hasPlayed = false;
     bool playerEntered;
 
-    private void Start()
-    {
-        sfx = GetComponent<AudioSource>();
-    }
+    private void Start() => sfx = GetComponent<AudioSource>();
 
     private void Update()
     {
@@ -27,7 +23,7 @@ public class SoundTriggerHandler : MonoBehaviour
     {
         if (other.CompareTag("Player") && !hasPlayed)
         {
-            sfx.Play(); // Play the sound on the AudioSource.
+            sfx.Play(); // Play the clip on the AudioSource.
             hasPlayed = true;
             playerEntered = true;
         }
