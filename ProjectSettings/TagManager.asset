@@ -4,8 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Checker
-  - Draggable
+  - LaserBlockObj
+  - LaserCheckerObj
+  - Checkpoint
+  - Button
+  - CanGrab
   layers:
   - Default
   - TransparentFX
@@ -13,10 +16,10 @@ TagManager:
   - Ground
   - Water
   - UI
-  - Draggable
-  - Grappable
-  - 
-  - 
+  - Grab
+  - Grapple
+  - IgnoreCollisionLocal
+  - Interactable
   - 
   - 
   - 

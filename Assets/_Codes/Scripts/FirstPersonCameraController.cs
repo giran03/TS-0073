@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
 using UnityEngine;
-
+/// <summary>
+/// This script can be found under the Camera Holder in the heirarchy.
+/// </summary>
 public class FirstPersonCameraController : MonoBehaviour
 {
     [Header("Mouse Look")]
@@ -30,12 +32,8 @@ public class FirstPersonCameraController : MonoBehaviour
         yRotation += mousex;
         xRotation -= mousey;
 
-        if(!PlayerInteractionHandler.isDragging)
-            xRotation = Mathf.Clamp(xRotation, -90, 90);
-        else
-            xRotation = Mathf.Clamp(xRotation, -90, 40);
 
-        // Debug.Log(xRotation, this);
+        xRotation = Mathf.Clamp(xRotation, -90, 90);
 
         // rotate cam and orientation
         firstPersonCamera.rotation = Quaternion.Euler(xRotation, yRotation, 0);
