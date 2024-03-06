@@ -9,6 +9,7 @@ TagManager:
   - Checkpoint
   - Button
   - CanGrab
+  - RotatingObject
   layers:
   - Default
   - TransparentFX

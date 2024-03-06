@@ -10,12 +10,12 @@ public class ButtonInteract : MonoBehaviour, IInteractable
     [SerializeField] float offset;
     [SerializeField] float duration;
     [SerializeField] float buttonCooldownDuration;
+    [SerializeField] ButtonDirection buttonDirection;
     bool isButtonOnCooldown;
     bool buttonPressed;
     Vector3 originalPosition;
     Vector3 offsetPosition;
 
-    [SerializeField] ButtonDirection buttonDirection;
     enum ButtonDirection
     {
         Top,
@@ -34,10 +34,10 @@ public class ButtonInteract : MonoBehaviour, IInteractable
 
     private void Update()
     {
-        ButtonPlacemen();
+        ButtonPlacement();
     }
 
-    void ButtonPlacemen()
+    void ButtonPlacement()
     {
         if (buttonDirection == ButtonDirection.Right)
             offsetPosition = originalPosition + new Vector3(0, 0, offset);

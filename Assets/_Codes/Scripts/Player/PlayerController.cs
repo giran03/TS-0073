@@ -223,4 +223,20 @@ public class PlayerController : MonoBehaviour
             initialPosition = (checkpoint.position, checkpoint.rotation);
         }
     }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("RotatingObject"))
+        {
+            //Get the contact point and normals
+            ContactPoint contact = other.contacts[0];
+            Vector3 normal = contact.normal;
+
+            //Calculate the reflection vector
+            Vector3 reflection = Vector3.Reflect(orientation.transform.forward, normal);
+
+            //Apply the reflection force to the colliding object
+            rb.AddForce(reflection * 50f, ForceMode.Impulse);
+        }
+    }
 }
