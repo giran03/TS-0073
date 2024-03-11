@@ -1,12 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
 /// This script can be found under 'AudioManager' in the heirarchy.
 /// </summary>
-public class AudioManager : MonoBehaviour
+public class AudioNarrationManager : MonoBehaviour
 {
-    public static AudioManager Instance { get; private set; } // Singleton instance.
+    public static AudioNarrationManager Instance { get; private set; } // Singleton instance.
     private AudioSource audioSource;
     private Queue<AudioClip> audioQueue = new();
 

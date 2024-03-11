@@ -25,7 +25,7 @@ public class NarrationTriggerHandler : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            AudioManager.Instance.QueueAudioClip(sfx.clip); // Add the clip to the queue.
+            AudioNarrationManager.Instance.QueueAudioClip(sfx.clip); // Add the clip to the queue.
             playerEntered = true;
         }
     }

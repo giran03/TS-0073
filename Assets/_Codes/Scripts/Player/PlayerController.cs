@@ -20,6 +20,10 @@ public class PlayerController : MonoBehaviour
     [Header("Keybinds")]
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
     [SerializeField] KeyCode sprintKey = KeyCode.LeftShift;
+    [SerializeField] KeyCode escMenuKey = KeyCode.Escape;
+
+    [Header("Pause Menu")]
+    [SerializeField] GameObject pauseMenu;
 
     [Header("Ground Check")]
     [SerializeField] float playerHeight;
@@ -44,7 +48,7 @@ public class PlayerController : MonoBehaviour
     (Vector3, quaternion) initialPosition;
     Vector3 moveDirection;
     Rigidbody rb;
-
+    bool isPaused;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -88,6 +92,16 @@ public class PlayerController : MonoBehaviour
             Jump();
             Invoke(nameof(ResetJump), jumpCooldown);
         }
+
+        //esc menu
+        if (Input.GetKeyDown(escMenuKey))
+        {
+            isPaused = !isPaused;
+            if (isPaused)
+                LevelSceneManager.Instance.PauseGame(pauseMenu);
+            else
+                LevelSceneManager.Instance.ResumeGame(pauseMenu);
+        }
     }
 
     private void StateHandler()
@@ -103,10 +117,6 @@ public class PlayerController : MonoBehaviour
         // state - swinging/grapple
         else if (isSwinging)
             moveSpeed = swingSpeed;
-
-        // state - Air
-        else
-            rb.AddForce(gravityValue * rb.mass * Physics.gravity, ForceMode.Force);
     }
 
     private void MovePlayer()
@@ -131,7 +141,10 @@ public class PlayerController : MonoBehaviour
 
         // in air
         else if (!grounded && !isSwinging)
+        {
             rb.AddForce(10f * airMultiplier * moveSpeed * moveDirection.normalized, ForceMode.Force);
+            rb.AddForce(gravityValue * rb.mass * Physics.gravity, ForceMode.Force);
+        }
 
         // turn gravity off while on slope
         rb.useGravity = !OnSlope();
@@ -236,7 +249,7 @@ public class PlayerController : MonoBehaviour
             Vector3 reflection = Vector3.Reflect(orientation.transform.forward, normal);
 
             //Apply the reflection force to the colliding object
-            rb.AddForce(reflection * 50f, ForceMode.Impulse);
+            rb.AddForce(reflection * 10f, ForceMode.Impulse);
         }
     }
 }

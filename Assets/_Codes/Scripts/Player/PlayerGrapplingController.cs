@@ -26,10 +26,7 @@ public class PlayerGrapplingController : MonoBehaviour
     Vector3 currentGrapplePosition;
     SpringJoint joint;
 
-    private void Start()
-    {
-        lr = GetComponent<LineRenderer>();
-    }
+    private void Start() => lr = GetComponent<LineRenderer>();
 
     void Update()
     {
