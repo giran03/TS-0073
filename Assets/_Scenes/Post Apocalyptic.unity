@@ -40074,6 +40074,10 @@ PrefabInstance:
       propertyPath: laserActivatedObjects.Array.data[0]
       value: 
       objectReference: {fileID: 589211313}
+    - target: {fileID: 6516183551623233480, guid: 431487aff9abedd4eb4db6448e915b1d, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 7098833339527469385, guid: 431487aff9abedd4eb4db6448e915b1d, type: 3}
       propertyPath: m_Name
       value: Laser_2
@@ -40120,7 +40124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9178311292256490108, guid: 431487aff9abedd4eb4db6448e915b1d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9178311292256490108, guid: 431487aff9abedd4eb4db6448e915b1d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -40128,7 +40132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9178311292256490108, guid: 431487aff9abedd4eb4db6448e915b1d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.06
+      value: 2.635
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
