@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
 
     [Header("Ground Check")]
+    [SerializeField] Transform GroundChecker;
     [SerializeField] float playerHeight;
     [SerializeField] string[] groundLayers = new string[] { "Ground", "Grab", "Grapple" };
     LayerMask whatIsGround;
@@ -49,6 +50,7 @@ public class PlayerController : MonoBehaviour
     Vector3 moveDirection;
     Rigidbody rb;
     bool isPaused;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -61,7 +63,9 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * .7f, whatIsGround);
+        grounded = Physics.CheckSphere(GroundChecker.position, .5f, whatIsGround);
+
+        Debug.Log(grounded);
 
         MyInput();
         SpeedControl();

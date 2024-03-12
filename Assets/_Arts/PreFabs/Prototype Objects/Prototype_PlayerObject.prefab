@@ -80,7 +80,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.1
+    widthMultiplier: 0.05
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -93,15 +93,6 @@ LineRenderer:
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1
-        value: 0.48333335
-        inSlope: -0.027254073
-        outSlope: -0.027254073
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.6115288
-        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -198,6 +189,37 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.535, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7966355405995527311}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7082548991985680683
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3967973727319937973}
+  m_Layer: 0
+  m_Name: GroundChecker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3967973727319937973
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7082548991985680683}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -355,6 +377,7 @@ GameObject:
   - component: {fileID: 7422558548413155893}
   - component: {fileID: 6327571892875474781}
   - component: {fileID: 8651286381925622441}
+  - component: {fileID: 4400007998013542829}
   m_Layer: 0
   m_Name: Prototype_PlayerObject
   m_TagString: Untagged
@@ -378,6 +401,7 @@ Transform:
   - {fileID: 5721834784420230533}
   - {fileID: 5066331704391665103}
   - {fileID: 9099159825086867804}
+  - {fileID: 3967973727319937973}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &5648765270516401260
@@ -428,7 +452,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 57d23a30361de0e46bfb5c8818a071cb, type: 2}
+  - {fileID: 2100000, guid: 971fe558c206eed46b8da9614d58796d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -528,19 +552,22 @@ MonoBehaviour:
   swingSpeed: 10
   groundDrag: 9
   isSwinging: 0
-  jumpForce: 11
+  jumpForce: 16
   jumpCooldown: 0.5
   airMultiplier: 0.1
   jumpKey: 32
   sprintKey: 304
+  escMenuKey: 27
+  pauseMenu: {fileID: 0}
+  GroundChecker: {fileID: 3967973727319937973}
   playerHeight: 2
   groundLayers:
   - Ground
   - Grab
   - Grapple
-  maxSlopeAngle: 90
+  maxSlopeAngle: 40
   orientation: {fileID: 5066331704391665103}
-  gravityValue: 0.3
+  gravityValue: 3
 --- !u!114 &8651286381925622441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,6 +585,24 @@ MonoBehaviour:
   scrollSpeed: 3
   dragSpeed: 4
   playerCamera: {fileID: 0}
-  draggableLayer:
+  grabLayer:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &4400007998013542829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8498148091951801369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f6a17e738e833349a768543de926aff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsInteractable:
+    serializedVersion: 2
+    m_Bits: 512
+  playerCam: {fileID: 0}
+  buttonObj: {fileID: 5004538701053436652, guid: 3a70eb2a7d07a3f42a7158da9e02ff5a, type: 3}
+  interactDistance: 2.5
