@@ -9,6 +9,7 @@ public class LevelSceneManager : MonoBehaviour
 
     private void Awake()
     {
+        // singleton pattern
         if (Instance != null && Instance != this)
             Destroy(this);
         else

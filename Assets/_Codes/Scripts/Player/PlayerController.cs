@@ -63,9 +63,8 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // ground check
-        grounded = Physics.CheckSphere(GroundChecker.position, .5f, whatIsGround);
-
-        Debug.Log(grounded);
+        grounded = Physics.CheckSphere(GroundChecker.position, .3f, whatIsGround);
+        Debug.Log("grounded "+ grounded);
 
         MyInput();
         SpeedControl();
@@ -239,6 +238,8 @@ public class PlayerController : MonoBehaviour
             Transform checkpoint = other.gameObject.transform;
             initialPosition = (checkpoint.position, checkpoint.rotation);
         }
+        if (other.gameObject.CompareTag("Finish"))
+            LevelSceneManager.Instance.GoToScene("Game"); // INPUT NEXT LEVEL
     }
 
     void OnCollisionEnter(Collision other)
