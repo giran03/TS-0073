@@ -1,4 +1,4 @@
-using Unity.Mathematics;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -37,6 +37,10 @@ public class PlayerController : MonoBehaviour
     RaycastHit slopeHit;
     bool exitingSlope;
 
+    [Header("Footsteps SFX")]
+    [SerializeField] AudioClip[] footSteps;
+    AudioSource audioSource;
+
     [Header("Configs")]
     [SerializeField] Transform orientation;
     [SerializeField] float gravityValue;
@@ -46,15 +50,18 @@ public class PlayerController : MonoBehaviour
     float horizontalInput;
     float verticalInput;
 
-    (Vector3, quaternion) initialPosition;
+    (Vector3, Quaternion) initialPosition;
     Vector3 moveDirection;
     Rigidbody rb;
     bool isPaused;
+    bool isPlaying;
+    Vector3 flatVel;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        audioSource = GetComponent<AudioSource>();
         whatIsGround = LayerMask.GetMask(groundLayers);
         readyToJump = true;
         initialPosition = (transform.position, transform.rotation);
@@ -69,6 +76,9 @@ public class PlayerController : MonoBehaviour
         SpeedControl();
         StateHandler();
         PlayerBounds();
+
+        if (grounded && verticalInput != 0 || horizontalInput != 0 && rb.velocity.y !> 1)
+            PlayFootstepSound();
 
         // handle drag
         if (grounded)
@@ -161,7 +171,7 @@ public class PlayerController : MonoBehaviour
         // limiting speed on ground or in air
         else
         {
-            Vector3 flatVel = new(rb.velocity.x, 0f, rb.velocity.z);
+            flatVel = new(rb.velocity.x, 0f, rb.velocity.z);
 
             // limit velocity if needed
             if (flatVel.magnitude > moveSpeed)
@@ -219,12 +229,31 @@ public class PlayerController : MonoBehaviour
         Physics.SyncTransforms();
     }
 
-    public void TransitionLevel(Vector3 pos, quaternion rot)
+    public void TransitionLevel(Vector3 pos, Quaternion rot)
     {
         transform.SetPositionAndRotation(pos, rot);
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
         Physics.SyncTransforms();
+    }
+
+    public void PlayFootstepSound()
+    {
+        if (!isPlaying)
+        {
+            isPlaying = true;
+            int index = Random.Range(0, footSteps.Length);
+            AudioClip footstepSound = footSteps[index];
+            audioSource.PlayOneShot(footstepSound);
+            audioSource.pitch = flatVel.magnitude > 10f ? 2.5f : 1f;
+            StartCoroutine(Cooldown(footstepSound.length));
+        }
+    }
+
+    IEnumerator Cooldown(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        isPlaying = false;
     }
 
     private void OnTriggerEnter(Collider other)

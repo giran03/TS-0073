@@ -25,6 +25,7 @@ public class PlayerGrapplingController : MonoBehaviour
     Vector3 grapplePoint;
     Vector3 currentGrapplePosition;
     SpringJoint joint;
+    bool sfxPlayed;
 
     private void Start() => lr = GetComponent<LineRenderer>();
 
@@ -43,7 +44,7 @@ public class PlayerGrapplingController : MonoBehaviour
         if (joint != null) AirMovement();
     }
 
-    void LateUpdate()=> DrawRope();
+    void LateUpdate() => DrawRope();
 
     void AirMovement()
     {
@@ -118,6 +119,8 @@ public class PlayerGrapplingController : MonoBehaviour
 
     void StopGrapple()
     {
+        sfxPlayed = false;
+
         playerController.isSwinging = false;
 
         lr.positionCount = 0;
@@ -128,6 +131,13 @@ public class PlayerGrapplingController : MonoBehaviour
     {
         //If not grappling, don't draw rope
         if (!joint) return;
+
+        // SFX
+        if(!sfxPlayed)
+        {
+            sfxPlayed = true;
+            AudioManager.Instance.PlaySFX("Grapple", transform.position);
+        }
 
         currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, grapplePoint, Time.deltaTime * 8f);
 
