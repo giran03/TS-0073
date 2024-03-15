@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4860252678754374551}
   - component: {fileID: 6103085229672378811}
   m_Layer: 0
-  m_Name: SingleWoodenPlank_13_v1
+  m_Name: singlewood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
