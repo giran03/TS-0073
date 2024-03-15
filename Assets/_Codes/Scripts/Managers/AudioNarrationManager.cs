@@ -5,7 +5,7 @@ using UnityEngine;
 /// </summary>
 public class AudioNarrationManager : MonoBehaviour
 {
-    public static AudioNarrationManager Instance { get; private set; } // Singleton instance.
+    public static AudioNarrationManager Instance;
     private AudioSource audioSource;
     private Queue<AudioClip> audioQueue = new();
 

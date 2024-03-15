@@ -86,10 +86,12 @@ public class PlayerPhsygunController : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, maxGrabDistance, grabLayer)
             && hit.rigidbody != null && !hit.rigidbody.CompareTag("Player"))
         {
+            // SFX
+            AudioManager.Instance.PlaySFX("Grab", transform.position, true);
+
             grabOffset = hit.transform.InverseTransformVector(hit.point - hit.transform.position);
             grabDistance = hit.distance;
             selectedObject = hit.rigidbody;
-            // selectedObject.collisionDetectionMode = CollisionDetectionMode.Continuous;
             selectedObject.useGravity = false;
             selectedObject.isKinematic = false;
             lineRenderer.enabled = true;
@@ -98,7 +100,9 @@ public class PlayerPhsygunController : MonoBehaviour
 
     private void Release(bool freeze = false)
     {
-        // selectedObject.collisionDetectionMode = CollisionDetectionMode.Continuous;
+        // SFX
+        AudioManager.Instance.StopSFX();
+
         selectedObject.useGravity = true;
         selectedObject.isKinematic = false;
         lineRenderer.enabled = false;
@@ -139,7 +143,7 @@ public class PlayerPhsygunController : MonoBehaviour
             jointSwaps[rb].transform.localRotation = rb.transform.localRotation;
             jointSwaps[rb].GetComponent<CharacterJoint>().connectedAnchor = rb.GetComponent<FixedJoint>().connectedAnchor;
             jointSwaps[rb].GetComponent<CharacterJoint>().anchor = rb.GetComponent<FixedJoint>().anchor;
-            GameObject.Destroy(rb.gameObject);
+            Destroy(rb.gameObject);
             jointSwaps.Remove(rb);
         }
         else

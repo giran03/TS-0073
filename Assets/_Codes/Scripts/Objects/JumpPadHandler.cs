@@ -12,6 +12,9 @@ public class JumpPadHandler : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && !isOnCooldown)
         {
+            // SFX
+            AudioManager.Instance.PlaySFX("JumpPad", other.transform.position);
+
             StartCoroutine(JumpPadCooldown());
             Rigidbody playerRb = other.gameObject.transform.parent.GetComponent<Rigidbody>();
             playerRb.AddForce(10f * jumpForce * Vector3.up, ForceMode.Impulse);

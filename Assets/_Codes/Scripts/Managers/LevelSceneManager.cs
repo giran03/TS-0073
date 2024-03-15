@@ -1,9 +1,11 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelSceneManager : MonoBehaviour
 {
+    [Header("Configs")]
+    [SerializeField] Material defaultSkybox;
+    [SerializeField] Material apocalypticSkybox;
     public static LevelSceneManager Instance;
 
     private void Awake()
@@ -22,6 +24,17 @@ public class LevelSceneManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "MainMenu")
             EnableCursor();
     }
+
+    // Change skybox dependig on levels
+    private void Update()
+    {
+        if (ActiveScene() == "Post Apocalyptic")
+            RenderSettings.skybox = apocalypticSkybox;
+        else
+            RenderSettings.skybox = defaultSkybox;
+    }
+
+    public string ActiveScene() => SceneManager.GetActiveScene().name;
 
     public void GoToScene(string sceneName) => SceneManager.LoadSceneAsync(sceneName);
 

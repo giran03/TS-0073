@@ -44,3 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a2952d1497c2cb44bd8cbca06b205ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultSkybox: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  apocalypticSkybox: {fileID: 2100000, guid: 96564bbeec2da46428340ff15164c90e, type: 2}
