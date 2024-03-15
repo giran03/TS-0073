@@ -400,7 +400,7 @@ Transform:
   - {fileID: 45517288}
   - {fileID: 1892161993}
   - {fileID: 1609632849}
-  - {fileID: 239410892}
+  - {fileID: 543450652968058118}
   - {fileID: 973501543}
   - {fileID: 840997855}
   - {fileID: 257759430}
@@ -436,11 +436,6 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a0e59dfbfd926e844811fae635197292, type: 3}
   m_PrefabInstance: {fileID: 1669235471}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &239410892 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 64ca0686c1217a447abe71b1700dd959, type: 3}
-  m_PrefabInstance: {fileID: 765467373}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &257759430 stripped
 Transform:
@@ -2107,7 +2102,7 @@ GameObject:
   - component: {fileID: 1351857403}
   - component: {fileID: 1351857402}
   - component: {fileID: 1351857401}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3253,6 +3248,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee748d8964ab37a45862b43718abc651, type: 3}
+--- !u!4 &543450652968058118 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 64ca0686c1217a447abe71b1700dd959, type: 3}
+  m_PrefabInstance: {fileID: 765467373}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
