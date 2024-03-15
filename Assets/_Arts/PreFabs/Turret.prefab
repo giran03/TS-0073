@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef9e911805a5c724b8e0b3a557517237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObj: {fileID: 0}
+  playerObj: {fileID: 8498148091951801369, guid: 21db4585378e2394ab2511bf73e7cb2e, type: 3}
   projectileObj: {fileID: 4761464511496630426, guid: c7d6c6467b3bf1440b070822215b452b, type: 3}
   projectileOrigin: {fileID: 8340444342183681022}
   projectileForce: 12
