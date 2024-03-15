@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
         StateHandler();
         PlayerBounds();
 
-        if (grounded && verticalInput != 0 || horizontalInput != 0 && rb.velocity.y !> 1)
+        if (grounded && verticalInput != 0 || horizontalInput != 0 && rb.velocity.y! > 1)
             PlayFootstepSound();
 
         // handle drag
@@ -263,8 +263,24 @@ public class PlayerController : MonoBehaviour
             Transform checkpoint = other.gameObject.transform;
             initialPosition = (checkpoint.position, checkpoint.rotation);
         }
+
         if (other.gameObject.CompareTag("Finish"))
             LevelSceneManager.Instance.LevelFinish();
+
+        if (other.gameObject.CompareTag("Teleport"))
+        {
+            for (int i = 0; i < other.transform.childCount; i++)
+            {
+                Transform childTransform = other.transform.GetChild(i);
+
+                if (childTransform.name == "Destination")
+                {
+                    transform.SetPositionAndRotation(childTransform.position, childTransform.rotation);
+                    Physics.SyncTransforms();
+                }
+            }
+        }
+
     }
 
     void OnCollisionEnter(Collision other)
