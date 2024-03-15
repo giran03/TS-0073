@@ -31423,6 +31423,10 @@ PrefabInstance:
       propertyPath: playerCam
       value: 
       objectReference: {fileID: 1170185491}
+    - target: {fileID: 4400007998013542829, guid: 21db4585378e2394ab2511bf73e7cb2e, type: 3}
+      propertyPath: playerCam
+      value: 
+      objectReference: {fileID: 1170185491}
     - target: {fileID: 6327571892875474781, guid: 21db4585378e2394ab2511bf73e7cb2e, type: 3}
       propertyPath: pauseMenu
       value: 
@@ -58956,7 +58960,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1884032088
 Transform:
   m_ObjectHideFlags: 0

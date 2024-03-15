@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 public class LevelSceneManager : MonoBehaviour
 {
     public static LevelSceneManager Instance;
-    public static Action<string> OnSceneChanged;
 
     private void Awake()
     {
@@ -26,14 +25,14 @@ public class LevelSceneManager : MonoBehaviour
 
     public void GoToScene(string sceneName) => SceneManager.LoadSceneAsync(sceneName);
 
-    public void Play() => OnSceneChanged("Template_Level"); // change to the scene name of the first level
+    public void Play() => GoToScene("Post Apocalyptic"); // change to the scene name of the first level
 
     public void Quit() => Application.Quit();
 
     public void ReturnMainMenu()
     {
         Time.timeScale = 1f;
-        OnSceneChanged("MainMenu");
+        GoToScene("MainMenu");
     }
 
 

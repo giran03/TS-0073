@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 interface IInteractable
@@ -19,7 +20,7 @@ public class PlayerObjectInteractions : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && !Input.GetMouseButton(0))
             CheckForObjects();
     }
 
