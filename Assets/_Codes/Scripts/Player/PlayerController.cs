@@ -64,7 +64,6 @@ public class PlayerController : MonoBehaviour
     {
         // ground check
         grounded = Physics.CheckSphere(GroundChecker.position, .3f, whatIsGround);
-        Debug.Log("grounded "+ grounded);
 
         MyInput();
         SpeedControl();
@@ -78,10 +77,7 @@ public class PlayerController : MonoBehaviour
             rb.drag = 0;
     }
 
-    private void FixedUpdate()
-    {
-        MovePlayer();
-    }
+    private void FixedUpdate() => MovePlayer();
 
     private void MyInput()
     {

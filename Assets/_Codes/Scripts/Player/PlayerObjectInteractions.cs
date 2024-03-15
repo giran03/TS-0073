@@ -21,10 +21,6 @@ public class PlayerObjectInteractions : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
             CheckForObjects();
-
-        // if (predictionHit.transform != null)
-        //     if (predictionHit.transform.CompareTag("Button"))
-        //         UseButton();
     }
 
     private void CheckForObjects()
@@ -32,14 +28,5 @@ public class PlayerObjectInteractions : MonoBehaviour
         if (Physics.Raycast(playerCam.position, playerCam.forward, out RaycastHit raycastHit, interactDistance, whatIsInteractable))
             if (raycastHit.collider.gameObject.TryGetComponent(out IInteractable interactOjb))
                 interactOjb.Interact();
-    }
-
-    void UseButton()
-    {
-        // if (Input.GetKeyDown(KeyCode.E) && !isButtonOnCooldown)
-        // {
-        //     StartCoroutine(MoveButton());
-        //     StartCoroutine(ButtonCooldown());
-        // }
     }
 }

@@ -15,8 +15,6 @@ public class LevelSceneManager : MonoBehaviour
         else
             Instance = this;
 
-        OnSceneChanged += (scene) => GoToScene(scene);
-
         QualitySettings.vSyncCount = 1;
     }
 
