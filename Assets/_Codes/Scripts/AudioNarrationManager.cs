@@ -12,13 +12,10 @@ public class AudioNarrationManager : MonoBehaviour
     private void Awake()
     {
         // Singleton pattern.
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        if (Instance != null && Instance != this)
+            Destroy(this);
         else
-            Destroy(gameObject);
+            Instance = this;
 
         audioSource = GetComponent<AudioSource>();
     }

@@ -16,21 +16,19 @@ public class LaserHandler : MonoBehaviour
     private void Update()
     {
         lr.SetPosition(0, laserOrigin.position);
-        lr.SetPosition(1, laserLookAt.position);
-
+        
         if (Physics.Raycast(laserOrigin.position, laserOrigin.forward, out laserHit))
         {
-            if (laserHit.collider != null)
+            if (laserHit.collider != null && laserHit.collider.gameObject.CompareTag("LaserBlockObj"))
             {
                 lr.SetPosition(1, laserHit.point);
-
-                if (laserHit.collider.gameObject.CompareTag("LaserBlockObj"))
-                    EnableObject(true);
-                else
-                    EnableObject(false);
+                EnableObject(true);
             }
             else
-                lr.SetPosition(1, transform.forward * 100f);
+            {
+                EnableObject(false);
+                lr.SetPosition(1, laserLookAt.position);
+            }
         }
     }
 

@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 interface IInteractable
@@ -19,12 +20,8 @@ public class PlayerObjectInteractions : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && !Input.GetMouseButton(0))
             CheckForObjects();
-
-        // if (predictionHit.transform != null)
-        //     if (predictionHit.transform.CompareTag("Button"))
-        //         UseButton();
     }
 
     private void CheckForObjects()
@@ -32,14 +29,5 @@ public class PlayerObjectInteractions : MonoBehaviour
         if (Physics.Raycast(playerCam.position, playerCam.forward, out RaycastHit raycastHit, interactDistance, whatIsInteractable))
             if (raycastHit.collider.gameObject.TryGetComponent(out IInteractable interactOjb))
                 interactOjb.Interact();
-    }
-
-    void UseButton()
-    {
-        // if (Input.GetKeyDown(KeyCode.E) && !isButtonOnCooldown)
-        // {
-        //     StartCoroutine(MoveButton());
-        //     StartCoroutine(ButtonCooldown());
-        // }
     }
 }

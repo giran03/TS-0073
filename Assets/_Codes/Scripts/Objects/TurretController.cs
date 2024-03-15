@@ -25,7 +25,6 @@ public class TurretController : MonoBehaviour
             if (Time.time > nextFireTime)
             {
                 FireProjectile();
-
                 nextFireTime = Time.time + fireRate;
             }
         }

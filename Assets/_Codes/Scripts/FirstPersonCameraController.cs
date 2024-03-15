@@ -41,7 +41,6 @@ public class FirstPersonCameraController : MonoBehaviour
         yRotation += mousex;
         xRotation -= mousey;
 
-
         xRotation = Mathf.Clamp(xRotation, -90, 90);
 
         // rotate cam and orientation

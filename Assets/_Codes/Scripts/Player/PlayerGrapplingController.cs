@@ -43,10 +43,7 @@ public class PlayerGrapplingController : MonoBehaviour
         if (joint != null) AirMovement();
     }
 
-    void LateUpdate()
-    {
-        DrawRope();
-    }
+    void LateUpdate()=> DrawRope();
 
     void AirMovement()
     {

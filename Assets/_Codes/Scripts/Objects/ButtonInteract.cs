@@ -30,10 +30,7 @@ public class ButtonInteract : MonoBehaviour, IInteractable
         StartCoroutine(ButtonCooldown());
     }
 
-    private void Update()
-    {
-        ButtonPlacement();
-    }
+    private void Update() => ButtonPlacement();
 
     void ButtonPlacement()
     {
