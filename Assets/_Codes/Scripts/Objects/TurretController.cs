@@ -56,6 +56,9 @@ public class TurretController : MonoBehaviour
 
     void FireProjectile()
     {
+        // SFX
+        AudioManager.Instance.PlaySFX("LaserBlaster", transform.position);
+        
         // Instantiate the projectile at the projectile origin's position and rotation
         projectile = Instantiate(projectileObj, projectileOrigin.position, projectileOrigin.rotation);
 

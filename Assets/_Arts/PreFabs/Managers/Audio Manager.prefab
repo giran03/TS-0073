@@ -54,6 +54,8 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 3229a940e2db14146a25affbdd43d17a, type: 3}
   - clipName: JumpPad
     audioClip: {fileID: 8300000, guid: 2ce2cbe528c63e745a897606964bfb88, type: 3}
+  - clipName: LaserBlaster
+    audioClip: {fileID: 8300000, guid: 45b701cd40abbcc43ada1a7ef6fa64d6, type: 3}
   musicSource: {fileID: 5178906918146022673}
   sfxSource: {fileID: 5937087194108264676}
 --- !u!1 &2330068722090718584

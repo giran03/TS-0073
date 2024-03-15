@@ -9,12 +9,15 @@ EditorBuildSettings:
     path: Assets/_Scenes/MainMenu.unity
     guid: b19898312dd6492499b3879db80633a4
   - enabled: 1
+    path: Assets/_Scenes/Levels_/001_Tutorial.unity
+    guid: a883dd254d54ae9478002fa8effbeed4
+  - enabled: 1
     path: Assets/_Scenes/Post Apocalyptic.unity
     guid: 98f32e615e1adcc468fba7e8c1095361
   - enabled: 1
-    path: Assets/_Scenes/Game.unity
-    guid: 162da3aebbbd9664aa8e6023be47be46
-  - enabled: 1
     path: Assets/_Scenes/Template_Level.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/_Scenes/Game.unity
+    guid: 162da3aebbbd9664aa8e6023be47be46
   m_configObjects: {}

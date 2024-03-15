@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class LevelSceneManager : MonoBehaviour
@@ -7,6 +8,7 @@ public class LevelSceneManager : MonoBehaviour
     [SerializeField] Material defaultSkybox;
     [SerializeField] Material apocalypticSkybox;
     public static LevelSceneManager Instance;
+    string activeScene;
 
     private void Awake()
     {
@@ -28,6 +30,9 @@ public class LevelSceneManager : MonoBehaviour
     // Change skybox dependig on levels
     private void Update()
     {
+        activeScene = ActiveScene();
+
+        // SKYBOX
         if (ActiveScene() == "Post Apocalyptic")
             RenderSettings.skybox = apocalypticSkybox;
         else
@@ -38,7 +43,7 @@ public class LevelSceneManager : MonoBehaviour
 
     public void GoToScene(string sceneName) => SceneManager.LoadSceneAsync(sceneName);
 
-    public void Play() => GoToScene("Post Apocalyptic"); // change to the scene name of the first level
+    public void Play() => GoToScene("001_Tutorial"); // change to the scene name of the first level
 
     public void Quit() => Application.Quit();
 
@@ -48,6 +53,13 @@ public class LevelSceneManager : MonoBehaviour
         GoToScene("MainMenu");
     }
 
+    public void LevelFinish()   // FIXME: RE ORDER LEVELS
+    {
+        if (activeScene == "001_Tutorial")
+            GoToScene("Post Apocalyptic");
+        else if (activeScene == "Post Apocalyptic")
+            GoToScene("Game");
+    }
 
     public void PauseGame(GameObject pauseMenu)
     {

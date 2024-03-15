@@ -264,7 +264,7 @@ public class PlayerController : MonoBehaviour
             initialPosition = (checkpoint.position, checkpoint.rotation);
         }
         if (other.gameObject.CompareTag("Finish"))
-            LevelSceneManager.Instance.GoToScene("Game"); // INPUT NEXT LEVEL
+            LevelSceneManager.Instance.LevelFinish();
     }
 
     void OnCollisionEnter(Collision other)

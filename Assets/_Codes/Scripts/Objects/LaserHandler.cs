@@ -16,7 +16,7 @@ public class LaserHandler : MonoBehaviour
     private void Update()
     {
         lr.SetPosition(0, laserOrigin.position);
-        
+
         if (Physics.Raycast(laserOrigin.position, laserOrigin.forward, out laserHit))
         {
             if (laserHit.collider != null && laserHit.collider.gameObject.CompareTag("LaserBlockObj"))
@@ -30,6 +30,9 @@ public class LaserHandler : MonoBehaviour
                 lr.SetPosition(1, laserLookAt.position);
             }
         }
+        else
+            lr.SetPosition(1, laserLookAt.position);
+
     }
 
     // flips the active state of the game objects in this array
