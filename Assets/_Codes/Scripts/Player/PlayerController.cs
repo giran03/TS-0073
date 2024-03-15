@@ -267,6 +267,9 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Finish"))
             LevelSceneManager.Instance.LevelFinish();
 
+        if (other.gameObject.CompareTag("Deadzone"))
+            TeleportPlayer();
+
         if (other.gameObject.CompareTag("Teleport"))
         {
             for (int i = 0; i < other.transform.childCount; i++)

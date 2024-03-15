@@ -59,7 +59,11 @@ public class LevelSceneManager : MonoBehaviour
             GoToScene("Post Apocalyptic");
         else if (activeScene == "Post Apocalyptic")
             GoToScene("Game");
+        else
+            EndScreen();
     }
+
+    public void EndScreen() => GoToScene("EndScreen");
 
     public void PauseGame(GameObject pauseMenu)
     {
