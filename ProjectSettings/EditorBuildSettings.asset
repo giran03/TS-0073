@@ -18,10 +18,10 @@ EditorBuildSettings:
     path: Assets/_Scenes/Levels_/003_LV2.unity
     guid: 78a97c54a3d396c4db2364527621f2ae
   - enabled: 1
-    path: Assets/_Scenes/Levels_/Level.unity
+    path: Assets/_Scenes/Levels_/004_LV3.unity
     guid: 836b01aa32436a744a1339a442361fa6
   - enabled: 1
-    path: Assets/_Scenes/Levels_/Post Apocalyptic.unity
+    path: Assets/_Scenes/Levels_/005_LV4.unity
     guid: 98f32e615e1adcc468fba7e8c1095361
   - enabled: 1
     path: Assets/_Scenes/EndScreen.unity

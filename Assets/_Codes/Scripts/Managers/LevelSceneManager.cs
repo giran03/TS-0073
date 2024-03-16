@@ -34,6 +34,7 @@ public class LevelSceneManager : MonoBehaviour
             EnableCursor();
             StartCoroutine(MainMenuAnimations());
         }
+
         if (SceneManager.GetActiveScene().name == "EndScreen")
             EnableCursor();
     }
@@ -71,13 +72,11 @@ public class LevelSceneManager : MonoBehaviour
         else if (activeScene == "002_LV1")
             GoToScene("003_LV2");
         else if (activeScene == "003_LV2")
-            GoToScene("Level");
-        else if (activeScene == "Level")
-            GoToScene("Post Apocalyptic");
-        else if (activeScene == "Post Apocalyptic")
+            GoToScene("004_LV3");
+        else if (activeScene == "004_LV3")
+            GoToScene("005_LV4");
+        else if (activeScene == "005_LV4")
             GoToScene("EndScreen");
-        else
-            EndScreen();
     }
 
     public void EndScreen() => GoToScene("EndScreen");

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    
+
     [Header("Configs")]
     [SerializeField] Sound[] musicSounds, sfxSounds;
     [SerializeField] AudioSource musicSource, sfxSource;
@@ -21,7 +21,19 @@ public class AudioManager : MonoBehaviour
             Instance = this;
     }
 
-    private void Start() => PlayMusic("Ambience");
+    private void Start() => LevelAmbiance();
+
+    void LevelAmbiance()
+    {
+        if (LevelSceneManager.Instance.ActiveScene() == "002_LV1")
+            PlayMusic("Forest");
+        else if (LevelSceneManager.Instance.ActiveScene() == "003_LV2")
+            PlayMusic("Desert_lvl2");
+        else if (LevelSceneManager.Instance.ActiveScene() == "004_LV3")
+            PlayMusic("Desert_lvl3");
+        else if (LevelSceneManager.Instance.ActiveScene() == "005_LV4")
+            PlayMusic("PostApocalypse");
+    }
 
     public void PlayMusic(string clipName)
     {
@@ -31,6 +43,7 @@ public class AudioManager : MonoBehaviour
             musicSource.clip = sound.audioClip;
             musicSource.loop = true;
             musicSource.Play();
+            musicSource.volume = .6f;
             currentMusic = musicSource;
         }
     }

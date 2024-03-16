@@ -27,6 +27,8 @@ public class AudioNarrationManager : MonoBehaviour
         {
             audioSource.clip = audioQueue.Dequeue();
             audioSource.Play();
+            if(audioSource.isPlaying)
+                DontDestroyOnLoad(audioSource);
         }
     }
 
