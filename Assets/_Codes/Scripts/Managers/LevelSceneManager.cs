@@ -7,6 +7,7 @@ public class LevelSceneManager : MonoBehaviour
 {
     [Header("Configs")]
     [SerializeField] Material defaultSkybox;
+    [SerializeField] Material level1SkyBox;
     [SerializeField] Material apocalypticSkybox;
     public static LevelSceneManager Instance;
     string activeScene;
@@ -47,7 +48,9 @@ public class LevelSceneManager : MonoBehaviour
         activeScene = ActiveScene();
 
         // SKYBOX
-        if (ActiveScene() == "Post Apocalyptic")
+        if (ActiveScene() == "002_LV1")
+            RenderSettings.skybox = level1SkyBox;
+        else if (ActiveScene() == "Post Apocalyptic")
             RenderSettings.skybox = apocalypticSkybox;
         else
             RenderSettings.skybox = defaultSkybox;

@@ -45,4 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultSkybox: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  level1SkyBox: {fileID: 2100000, guid: 3dca317906cdc7944bc833e69a98d421, type: 2}
   apocalypticSkybox: {fileID: 2100000, guid: 96564bbeec2da46428340ff15164c90e, type: 2}
+  mainMenuEnvironments: []
