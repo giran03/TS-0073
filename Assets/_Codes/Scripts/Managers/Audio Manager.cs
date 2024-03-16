@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-
+    
     [Header("Configs")]
     [SerializeField] Sound[] musicSounds, sfxSounds;
     [SerializeField] AudioSource musicSource, sfxSource;
@@ -41,7 +41,6 @@ public class AudioManager : MonoBehaviour
             musicSource.clip = sound.audioClip;
             musicSource.loop = true;
             musicSource.Play();
-            musicSource.volume = .6f;
             currentMusic = musicSource;
         }
     }
