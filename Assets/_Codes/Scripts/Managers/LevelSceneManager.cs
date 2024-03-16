@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
@@ -9,6 +10,11 @@ public class LevelSceneManager : MonoBehaviour
     [SerializeField] Material apocalypticSkybox;
     public static LevelSceneManager Instance;
     string activeScene;
+
+    // MAIN MENU
+    [Header("Main Menu Settings")]
+    [SerializeField] GameObject[] mainMenuEnvironments = null; // Array of game objects to cycle
+    int currentIndex = 0; // Index of the currently active object
 
     private void Awake()
     {
@@ -24,6 +30,11 @@ public class LevelSceneManager : MonoBehaviour
     private void Start()
     {
         if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            EnableCursor();
+            StartCoroutine(MainMenuAnimations());
+        }
+        if (SceneManager.GetActiveScene().name == "EndScreen")
             EnableCursor();
     }
 
@@ -56,9 +67,15 @@ public class LevelSceneManager : MonoBehaviour
     public void LevelFinish()   // FIXME: RE ORDER LEVELS
     {
         if (activeScene == "001_Tutorial")
+            GoToScene("002_LV1");
+        else if (activeScene == "002_LV1")
+            GoToScene("003_LV2");
+        else if (activeScene == "003_LV2")
+            GoToScene("Level");
+        else if (activeScene == "Level")
             GoToScene("Post Apocalyptic");
         else if (activeScene == "Post Apocalyptic")
-            GoToScene("Game");
+            GoToScene("EndScreen");
         else
             EndScreen();
     }
@@ -89,5 +106,21 @@ public class LevelSceneManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+    }
+
+    IEnumerator MainMenuAnimations()
+    {
+        if (mainMenuEnvironments != null)
+            while (true)
+            {
+                // Disable the current active object
+                mainMenuEnvironments[currentIndex].SetActive(false);
+                // Move to the next object in the array
+                currentIndex = (currentIndex + 1) % mainMenuEnvironments.Length;
+                // Enable the next object
+                mainMenuEnvironments[currentIndex].SetActive(true);
+                yield return new WaitForSeconds(3f);
+            }
+
     }
 }
