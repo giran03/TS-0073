@@ -58,6 +58,7 @@ public class PlayerPhsygunController : MonoBehaviour
             if (selectedObject)
                 Release();
 
+        // FREEZE
         if (Input.GetKeyDown(KeyCode.R) && selectedObject != null)
             Release(true);
 

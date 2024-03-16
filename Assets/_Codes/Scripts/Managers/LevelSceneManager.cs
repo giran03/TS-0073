@@ -37,6 +37,8 @@ public class LevelSceneManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "EndScreen")
             EnableCursor();
+
+        AudioManager.Instance.LevelAmbiance();
     }
 
     // Change skybox dependig on levels
