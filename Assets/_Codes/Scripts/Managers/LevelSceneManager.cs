@@ -61,8 +61,8 @@ public class LevelSceneManager : MonoBehaviour
 
     public void ReturnMainMenu()
     {
-        Time.timeScale = 1f;
         GoToScene("MainMenu");
+        Time.timeScale = 1f;
     }
 
     public void LevelFinish()   // FIXME: RE ORDER LEVELS
@@ -78,9 +78,7 @@ public class LevelSceneManager : MonoBehaviour
         else if (activeScene == "005_LV4")
             GoToScene("EndScreen");
     }
-
-    public void EndScreen() => GoToScene("EndScreen");
-
+    
     public void PauseGame(GameObject pauseMenu)
     {
         Time.timeScale = 0f;
@@ -90,8 +88,8 @@ public class LevelSceneManager : MonoBehaviour
 
     public void ResetCurrentLevel()
     {
-        Time.timeScale = 1f;
         GoToScene(ActiveScene());
+        Time.timeScale = 1f;
         DisableCursor();
     }
 
