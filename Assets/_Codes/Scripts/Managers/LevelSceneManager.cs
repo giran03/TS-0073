@@ -89,6 +89,13 @@ public class LevelSceneManager : MonoBehaviour
         EnableCursor();
     }
 
+    public void ResetCurrentLevel()
+    {
+        Time.timeScale = 1f;
+        GoToScene(ActiveScene());
+        DisableCursor();
+    }
+
     public void ResumeGame(GameObject pauseMenu)
     {
         Time.timeScale = 1f;
