@@ -67,6 +67,8 @@ public class LevelSceneManager : MonoBehaviour
 
     public void LevelFinish()   // FIXME: RE ORDER LEVELS
     {
+        AudioManager.Instance.LevelAmbiance();
+
         if (activeScene == "001_Tutorial")
             GoToScene("002_LV1");
         else if (activeScene == "002_LV1")

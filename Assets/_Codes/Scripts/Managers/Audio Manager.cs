@@ -21,9 +21,7 @@ public class AudioManager : MonoBehaviour
             Instance = this;
     }
 
-    private void Start() => LevelAmbiance();
-
-    void LevelAmbiance()
+    public void LevelAmbiance()
     {
         if (LevelSceneManager.Instance.ActiveScene() == "002_LV1")
             PlayMusic("Forest");
